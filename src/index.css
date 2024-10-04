@@ -1,0 +1,141 @@
+
+body {
+  margin: 0;
+
+  font-family: 'Trueno', sans-serif !important;
+}
+.css-honxw6 {
+  width: 7px !important;
+  height: 7px !important;
+}
+.css-jn69v9 {
+  width: 7px !important;
+  height: 7px !important
+}
+.css-16jesut >.ps-menu-button {
+ font-size: 1.2rem !important;
+ color:#0C0E10 !important
+}
+.Chart_wrapper {
+  border: 1px solid rgb(124 141 181 / 50%);
+  width: max-content;
+  padding: 15px;
+  border-radius: 20px;
+}
+
+.info_container{
+    border: 1px solid #cfdcfc;
+    border-radius: 20px;
+    margin-bottom: 1rem;
+}
+/* card */
+.Card_icon {
+  position: absolute;
+  top: 10%;
+  right: 10%;
+}
+.Card_icon svg{
+  width: 1.6rem;
+  height: 1.6rem;
+  fill:#347AE2;
+}
+.top{
+  transform: rotate(135deg);
+  fill: green !important;
+}
+.low{
+  transform: rotate(315deg);
+
+  fill: red !important;
+}
+.card-border-right::after {
+  content: '';
+  position: absolute;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  height: 60%;
+  width: 3px;
+  background-color: #E6EDFF;
+}
+.card-container {
+  position: relative; 
+}
+.card-container:last-child .card-border-right::after {
+  display: none;
+}
+
+.Periodselect{
+    margin-bottom: -2rem;
+    margin-left: 2rem;
+}
+
+
+
+.selected {
+  background: #b6332e0f!important;
+  position: relative;
+}
+
+.selected::after {
+  content: '';
+  display: block;
+  width: 3px;
+  height: 1.4rem;
+  background-color: #B6332E;
+  border-radius: 30%;
+  position: absolute;
+  top: 50%;
+  right: 0px;
+  transform: translateY(-50%);
+}
+
+
+
+/* Modal */
+
+.modal-backdrop.fade {
+  z-index: 10000 !important; 
+  background: #cccccc;
+  opacity: 0.5 !important;
+}
+.modal {
+  z-index: 20000 !important;
+} 
+
+
+.cancel_modal {
+  font-size: 1rem;
+  background: none;
+  border: none;
+  color: #ff6565;
+}
+.cancel_modal svg{
+  
+    width: 30px;
+    height: 30px;
+
+}
+
+.edit_modal{
+    font-size: 1rem;
+    background: none;
+    border: 1px solid;
+    color: rgb(182, 51, 46);
+    padding: 5px;
+    border-radius: 5px;
+}
+
+.edit_modal:hover{
+    font-size: 1rem;
+    background: rgb(182, 51, 46);;
+    border: 1px solid;
+    color: white;
+    padding: 5px;
+    border-radius: 5px;
+}
+.image_drop{
+  height: 100px !important;
+  width: 100px !important;
+  color: #c8c8c8;
+}

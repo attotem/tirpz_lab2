@@ -1,0 +1,127 @@
+.info_card_calendar{
+    min-width: 100%;
+}
+.text_modal {
+    font-size: 17px;
+    margin-bottom: 10px;
+    margin-left: 10px;
+}
+.reg {
+    width: 100%;
+    font-size: large;
+    text-align: center;
+    margin-top: 10px;
+}
+.reg_btn {
+    cursor: pointer;
+    color: #6a6a6a;
+}
+.card_calendar {
+    padding: 20px;
+    background: white;
+    border-radius: 15px;
+    height: 90%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+.info_card_label{
+    opacity: 0.7;
+    font-size: 1rem;
+    padding-top: 10px;
+}
+.info_card_info{
+    font-size: 1.1rem;
+    font-weight: 600;
+}
+.hr_info{
+    margin-top: 0.5rem;
+    margin-bottom: 1rem;
+}
+.invoice{
+    color: rgb(182, 51, 46);
+}
+.button_enroll{
+    background: orange;
+    font-size: 1.5rem;
+    color: white;
+    font-weight: 600;
+    margin: 20px -5px -5px -5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 5px;
+}
+.button_urgently{
+    background: rgb(182, 51, 46);
+    font-size: 1.5rem;
+    color: white;
+    font-weight: 600;
+    margin: 20px -5px -5px -5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 5px;
+}
+.button_upcoming {
+    background: rgb(42 143 65);
+    font-size: 1.5rem;
+    color: white;
+    font-weight: 600;
+    margin: 20px -5px -5px -5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 5px;
+}
+.history_calendar{
+    margin-right: 5px;
+    font-size: 1.2rem;
+    cursor: pointer;
+    color: #9b9b9b;
+}
+.history_calendar {
+    color: #9b9b9b;
+}
+
+.paid{
+    color: green;
+    font-size: 1rem;
+    font-weight: 600;
+}
+
+.unpaid{
+    color:rgb(182, 51, 46);
+    font-size: 1rem;
+    font-weight: 600;
+}
+.loadmore {
+    background: rgb(182, 51, 46);
+    padding: 8px;
+    font-size: 1.4rem;
+    border-radius: 10px;
+    color: white;
+    border: none;
+}
+.filters{
+    display: flex;
+    gap: 10%;
+    width: 70%;
+    margin-bottom: 30px;
+}
+.text_solo{
+    color: white;
+    text-decoration: none;
+}
+
+.button_unpaid {
+    background-color: rgb(182, 51, 46);
+    color: white;
+}
+.download_pdf{
+    display: flex;
+    align-items: center;
+    position: absolute;
+    right: 1rem;
+    cursor: pointer;
+}

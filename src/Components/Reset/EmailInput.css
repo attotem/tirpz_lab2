@@ -1,0 +1,46 @@
+.login {
+    min-height: 100vh;
+  }
+  
+  
+  .bg-image {
+    background-image: url('./map.png');
+    background-position: center;
+    background-size: contain;
+    height: auto;
+    min-height: 400px;
+    background-repeat: no-repeat;
+  }
+  .login-heading {
+    font-weight: 300;
+  }
+  
+  .btn-login {
+    font-size: 0.9rem;
+    letter-spacing: 0.05rem;
+    padding: 0.75rem 1rem;
+    width: 100%;
+  }
+  .invalid
+  {
+    border-color: red!important;
+  }
+  .registration_btn {
+    text-align: center;
+    font-size: 15px;
+    color: #000000;
+    font-weight: 600;
+    background: #ededed;
+    border-radius: 10px;
+    padding: 4px;
+    margin-top: 20px
+  }
+  
+  .registration_btn:hover {
+    background-color: #a1a1a1;;
+  }
+  .link_back{
+    text-decoration: underline;
+    color: #0035ff;
+    cursor: pointer;
+  }

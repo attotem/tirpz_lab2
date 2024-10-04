@@ -1,0 +1,42 @@
+.login {
+    min-height: 100vh;
+  }
+  
+  
+  .bg-image {
+    background-image: url('./map.png');
+    background-position: center;
+    background-size: contain;
+    height: auto;
+    min-height: 400px;
+    background-repeat: no-repeat;
+  }
+  .login-heading {
+    font-weight: 300;
+  }
+  
+  .btn-login {
+    font-size: 0.9rem;
+    letter-spacing: 0.05rem;
+    padding: 0.75rem 1rem;
+    width: 100%;
+  }
+  .invalid
+  {
+    border-color: red!important;
+  }
+  .verify_text {
+    font-size: 17px;
+    text-align: center;
+}
+.to_login{
+  background: rgb(182, 51, 46);
+  padding: 12px;
+  font-size: 1.2rem;
+  border-radius: 10px;
+  text-align: center;
+  width: 100%;
+  border: none;
+  margin-top: 35px;
+  color: white;
+}

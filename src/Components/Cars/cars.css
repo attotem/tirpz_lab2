@@ -1,0 +1,164 @@
+
+
+.car_status {
+    position: absolute;
+    top: 15px;
+    font-size: 1rem;
+    opacity: 0.7;
+    font-weight: 600;
+    right: 10px;
+}
+.image_container {
+    height: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 10px;
+}
+
+.card {
+    border: none;
+    border-radius: 20px;
+    position: relative;
+    width: 100%; 
+    height: 100%;
+    margin-bottom: 20px; 
+}
+
+.card-img-top {
+    max-height: 90px;
+    max-width: 100px;
+    width: auto;
+}
+
+.card-title, .card-text {
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+    max-width: 100%;
+}
+
+.car_green{
+    color: green;
+}
+
+.car_yellow{
+    color: orange;
+}
+
+.car_red{
+    color: red;
+}
+
+.card {
+    border: none;
+    border-radius: 20px;
+    position: relative;
+}
+
+.card-title{
+    font-weight: 600;
+    font-size: 1.2rem;
+
+}
+
+.nameInfoCar{
+    font-size: 1rem;
+    padding-bottom: 5px;
+}
+
+.infoCar {
+    font-size: 1rem;
+    margin-left: 8px;
+    font-weight: 600;
+    padding-bottom: 5px;
+}
+
+.header_cars {
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom: 20px;
+}
+.Switch_container {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    cursor: pointer;
+}
+.card-body{
+    margin-top:30px
+}
+
+.green_blambda {
+    background: linear-gradient(180deg, #52c28f, #7ed957);
+    border-radius: 10px;
+    margin-left: 5px;
+    padding: 5px;
+    color: white;
+}
+.yellow_blambda {
+    background-image: linear-gradient(180deg, #ffb359, #ff914d);
+    margin-left: 5px;
+    border-radius: 10px;
+    padding: 5px;
+    color: white;
+}
+.red_blambda {
+    background-image: linear-gradient(180deg, #ff3131, #ff7d4d);
+    margin-left: 5px;
+    border-radius: 10px;
+    padding: 5px;
+    color: white;
+}
+.img_container{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.img_car {
+    max-width: 350px;
+    max-height: 200px;
+    margin: 25px;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+}
+
+.car_top_container {
+    position: relative;
+    height: 260px;
+}
+.driver_car{
+    position: absolute;
+    top: 0;
+    left: 0;
+
+}
+.car_card_name{
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    font-size: 2rem;
+    color: black;
+}
+.car_card_driver_img {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    margin-right: 20px;
+    object-fit: cover;
+}
+.car_card_driver_name{
+    font-size: 2rem;
+    color: #828282;
+    font-weight: 600;
+}
+.car_card_blambda{
+    font-size: 1.2rem;
+    margin-left: 0;
+    
+}
+.requierd_field{
+    color: #ff3131;
+}
