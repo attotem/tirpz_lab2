@@ -1,4 +1,4 @@
-const URL = "https://b2b.drivelab.cz/api/";
+const URL = "https://obidkarp.work/api/";
 
 const getSessionIdFromCookie = () => {
   const cookies = document.cookie.split('; ');
