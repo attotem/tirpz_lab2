@@ -12,7 +12,7 @@ export const AuthProvider = ({ children }) => {
 
     useEffect(() => {
         setIsAuthenticated(!!cookies.session_id);
-    }, [cookies.session_id]);
+    }, [cookies.session_id]); 
 
     return (
         <AuthContext.Provider value={{ isAuthenticated, setIsAuthenticated }}>
