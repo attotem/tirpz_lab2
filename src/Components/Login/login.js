@@ -75,27 +75,28 @@ function CustomFormValidation() {
       ? { email: identifier, password }
       : { park_name: identifier, password };
   
-    const data = await Login(JSON.stringify(body))
-    if (data.detail === 'Invalid username' || data.detail === 'Invalid email') {
-      setidentifierError(true);
-    } 
-    else if (data.detail === 'User is not verified') {
-      setVerification(true);
-    } 
-    else if (data.session_id) 
-      {
-        console.log("nen")
+    const data = await Login(JSON.stringify(body));
+  
+    if (data) {
+      if (data.detail === 'Invalid username' || data.detail === 'Invalid email') {
+        setidentifierError(true);
+      } else if (data.detail === 'User is not verified') {
+        setVerification(true);
+      } else if (data.session_id) {
+        console.log("nen");
         setCookie('session_id', '', { path: '/', expires: new Date(0) });
         setCookie('session_id', data.session_id, { path: '/', expires: expiration });
         localStorage.setItem('isAuthenticated', true);
         localStorage.setItem('isSuperuser', data.is_superuser);
         navigate('/dashboard');
-    } 
-    else {
+      } else {
+        setpasswordError(true);
+      }
+    } else {
       setpasswordError(true);
     }
-      
   };
+  
 
   const [cookies, setCookie] = useCookies(['session_id']);
 

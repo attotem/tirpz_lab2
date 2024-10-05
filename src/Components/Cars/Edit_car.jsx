@@ -4,7 +4,7 @@ import { useParams, useNavigate } from 'react-router-dom';
 import translations from "../translations.json";
 import { Typeahead } from 'react-bootstrap-typeahead';
 import 'react-bootstrap-typeahead/css/Typeahead.css';
-import { getCar, updateCar, getAllDrivers, getAllBrands} from '../../http';
+import { getCar, updateCar, getAllDrivers, getAllBrands } from '../../http';
 
 function EditCar() {
     let { carId } = useParams();
@@ -21,12 +21,11 @@ function EditCar() {
     const [brandsData, setBrandsData] = useState([]);
     const [selectedBrand, setSelectedBrand] = useState([]);
 
-  
-    const getCarData = async ()=> {
-        const data = await getCar(carId)
+    const getCarData = async () => {
+        const data = await getCar(carId);
         setCarData(data.car);
         setServiceIntervalData(data.serviceInterval);
-    }
+    };
 
     const fetchDrivers = async () => {
         try {
@@ -39,11 +38,11 @@ function EditCar() {
 
     const fetchBrandsData = async () => {
         try {
-        const data = await getAllBrands();
-        const sortedBrands = data
-            .map(brand => ({ id: brand.id, label: brand.name }))
-            .sort((a, b) => a.label.localeCompare(b.label));
-        setBrandsData(sortedBrands);
+            const data = await getAllBrands();
+            const sortedBrands = data
+                .map(brand => ({ id: brand.id, label: brand.name }))
+                .sort((a, b) => a.label.localeCompare(b.label));
+            setBrandsData(sortedBrands);
         } catch (error) {
             console.error('Error fetching brands data:', error);
         }
@@ -52,6 +51,7 @@ function EditCar() {
     useEffect(() => {
         getCarData();
         fetchDrivers();
+        fetchBrandsData();
     }, [carId]);
 
     useEffect(() => {
@@ -112,22 +112,19 @@ function EditCar() {
 
         formData.append('data', JSON.stringify(dataObject));
 
+        // Append image file if it was selected.
         if (changedData.image instanceof File) {
             formData.append('image', changedData.image, changedData.image.name);
         }
 
-       
-        const data = await updateCar(formData)
+        const data = await updateCar(formData);
 
-        if(data) {
+        if (data) {
             alert('Údaje o autě byly úspěšně aktualizovány');
             navigate(-1);
-        }
-        else{
+        } else {
             alert('Chyba: Nepodařilo se aktualizovat údaje o autě.');
-
         }
-
     };
 
     if (!carData || !serviceIntervalData) return <div>Načítání...</div>;
@@ -138,7 +135,15 @@ function EditCar() {
         <Container>
             <Form onSubmit={handleSubmit} className='w-75'>
                 {Object.keys(carData).filter(key => !excludedFields.includes(key)).map(key => {
-                    if (key === "photo") return null;
+                    if (key === "photo") return ( <Form.Group className="mb-3">
+                        <Form.Label>Car Image</Form.Label>
+                        <Form.Control
+                            type="file"
+                            name="image"
+                            accept="image/*"
+                            onChange={handleChangeCarData}
+                        />
+                    </Form.Group>);
                     if (key === "status") return null;
                     if (key === "next_service_mileage") return null;
                     if (key === "next_tire_change") return null;
@@ -155,6 +160,18 @@ function EditCar() {
                                     placeholder="Select a brand"
                                     selected={selectedBrand}
                                     clearButton
+                                />
+                            </Form.Group>
+                        );
+                    } else if (key === "image") {
+                        return (
+                            <Form.Group className="mb-3" key={key}>
+                                <Form.Label>{translate("image")}</Form.Label>
+                                <Form.Control
+                                    type="file"
+                                    name="image"
+                                    accept="image/*"
+                                    onChange={handleChangeCarData}
                                 />
                             </Form.Group>
                         );

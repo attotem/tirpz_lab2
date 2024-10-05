@@ -6,7 +6,8 @@ import translations from "../translations.json";
 import 'react-bootstrap-typeahead/css/Typeahead.css';
 import { Typeahead } from 'react-bootstrap-typeahead';
 import InputMask from 'react-input-mask';
-import { getAllBrands,getAllDrivers,AddNewCar } from '../../http';
+import { getAllBrands, getAllDrivers, AddNewCar } from '../../http';
+
 function AddCar() {
     const [driversData, setDriversData] = useState([]);
     const [selectedBrand, setSelectedBrand] = useState([]);
@@ -28,7 +29,7 @@ function AddCar() {
         kms_per_month: "",
         driver_id: null,
         tire_type: 0,
-        image: null
+        image: null,  // Add image field here
     });
 
     const [serviceInterval, setServiceInterval] = useState({
@@ -63,15 +64,15 @@ function AddCar() {
             ...prevInterval,
             [name]: value
         }));
-    }; 
+    };
 
     const fetchBrands = async () => {
         try {
             const data = await getAllBrands();
             const brands = data
-            .map(brand => ({ id: brand.id, label: brand.name }))
-            .sort((a, b) => a.label.localeCompare(b.label));
-        setBrandOptions(brands);
+                .map(brand => ({ id: brand.id, label: brand.name }))
+                .sort((a, b) => a.label.localeCompare(b.label));
+            setBrandOptions(brands);
         } catch (error) {
             console.error('Error fetching brands data:', error);
         }
@@ -98,7 +99,7 @@ function AddCar() {
         if (files) {
             setCarData(prevData => ({
                 ...prevData,
-                [name]: files[0]
+                [name]: files[0]  // Handle file input
             }));
         } else {
             setCarData(prevData => ({
@@ -132,22 +133,22 @@ function AddCar() {
             car: { ...carData, ...defaultValues },
             serviceInterval: { ...serviceInterval },
         }));
-    
+
+        // Append image file if uploaded
         if (carData.image) {
             formData.append('image', carData.image, carData.image.name);
         }
+
         const data = await AddNewCar(formData);
         console.log(data);
-        if(data!==null)
-        {
+        if (data !== null) {
             alert('Auto úspěšně přidáno s servisním intervalem!');
-            navigate("/cars")
-        }else{
+            navigate("/cars");
+        } else {
             alert('Chyba: Nepodařilo se přidat auto s servisním intervalem.');
-
         }
-        
     };
+
     const navigate = useNavigate();
     const handleCancel = () => {
         navigate(-1);
@@ -268,7 +269,15 @@ function AddCar() {
                             );
                         }
                     })}
-
+                    <Form.Group className="mb-3">
+                        <Form.Label>Car Image</Form.Label>
+                        <Form.Control
+                            type="file"
+                            name="image"
+                            accept="image/*"
+                            onChange={handleChange}
+                        />
+                    </Form.Group>
                     <h3>Servisní interval</h3>
                     {Object.keys(serviceInterval).map(key => {
                         if (key === "service_interval") {
