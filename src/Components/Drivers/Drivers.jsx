@@ -56,7 +56,7 @@ function Drivers() {
                     <table className="table" style={{ textAlign: "center" }}>
                         <thead>
                             <tr>
-                                {/* <th className='table_header '></th> */}
+                                <th className='table_header '></th>
                                 <th className='table_header '>{translate("First name")}</th>
                                 <th className='table_header '>{translate("Last name")}</th>
                                 <th className='table_header '>{translate("Phone number")}</th>

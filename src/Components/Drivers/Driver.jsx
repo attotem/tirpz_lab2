@@ -39,6 +39,7 @@ const Driver = ({ cars = [], first_name, phone_number, last_name, experience, ca
     <>
       <tr className='TableRow' >
        
+        <td className="py-3 table_text align-middle  "><img className='driver_photo' src={photo}></img></td>
         <td className="py-3 table_text align-middle">{first_name}</td>
         <td className="py-3 table_text align-middle">{last_name}</td>
         <td className="py-3 table_text align-middle">{phone_number}</td>
@@ -53,6 +54,7 @@ const Driver = ({ cars = [], first_name, phone_number, last_name, experience, ca
         </Modal.Header>
         <Modal.Body>
           <div className="driver-info">
+            
             <div className="d-flex">
               <div className="nameInfoCar">{translate("First Name")}:</div>
               <div className="infoCar">{first_name}</div>

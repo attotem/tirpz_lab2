@@ -4,7 +4,8 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import { useParams, useNavigate } from 'react-router-dom';
 import translations from "../translations.json"
 import InputMask from 'react-input-mask';
-import { getDriver,updateDriver } from '../../http';
+import { getDriver, updateDriver } from '../../http';
+
 function EditDriver() {
     const navigate = useNavigate();
     const { driverId } = useParams();
@@ -18,20 +19,23 @@ function EditDriver() {
         phone_number: '',
         tg: '',
         parkId: '',
-        image: null,
+        image: null, // Added for image field
     });
     const [changedData, setChangedData] = useState({});
     const cookie = document.cookie;
     const sessionId = cookie.split("=")[1];
+
     function translate(key) {
         return translations[key] || key;
     }
-    const getDriverData = async () =>{
-        const data = await getDriver(driverId)
-        setDriverData(data)
-    }
+
+    const getDriverData = async () => {
+        const data = await getDriver(driverId);
+        setDriverData(data);
+    };
+
     useEffect(() => {
-        getDriverData()
+        getDriverData();
     }, [driverId, sessionId]);
 
     const handleChange = (event) => {
@@ -39,7 +43,7 @@ function EditDriver() {
         if (name === 'image') {
             setDriverData(prevData => ({
                 ...prevData,
-                image: files[0]
+                image: files[0] // Handling image file input
             }));
         } else {
             const updatedValue = type === 'checkbox' ? checked : value;
@@ -58,7 +62,7 @@ function EditDriver() {
         navigate(-1);
     };
 
-    const handleSubmit =  async (event) => {
+    const handleSubmit = async (event) => {
         event.preventDefault();
 
         const formData = new FormData();
@@ -70,20 +74,16 @@ function EditDriver() {
         formData.append('data', JSON.stringify(dataObject));
 
         if (driverData.image && driverData.image instanceof File) {
-            formData.append('image', driverData.image, driverData.image.name);
+            formData.append('image', driverData.image, driverData.image.name); // Append image file
         }
 
-       const data = await updateDriver(formData)
-       if(data){
-        alert('Údaje o řidiči byly úspěšně aktualizovány');
-        navigate(-1);
-       }
-       else{
-        alert('Chyba: Nepodařilo se aktualizovat údaje o řidiči.');
-       }
-                
-          
-          
+        const data = await updateDriver(formData);
+        if (data) {
+            alert('Údaje o řidiči byly úspěšně aktualizovány');
+            navigate(-1);
+        } else {
+            alert('Chyba: Nepodařilo se aktualizovat údaje o řidiči.');
+        }
     };
 
     return (
@@ -100,11 +100,6 @@ function EditDriver() {
                         <Form.Control type="text" placeholder="Enter Last Name" name="last_name" value={driverData.last_name} onChange={handleChange} />
                     </Form.Group>
 
-                    {/* <Form.Group className="mb-3">
-                        <Form.Label>{translate("Phone Number")}</Form.Label>
-                        <Form.Control type="text" placeholder="Enter Phone Number" name="phone_number" value={driverData.phone_number} onChange={handleChange} />
-                    </Form.Group> */}
-
                     <Form.Group className="mb-3">
                         <Form.Label>{translate("Phone Number")}</Form.Label>
                         <InputMask
@@ -119,22 +114,20 @@ function EditDriver() {
                         />
                     </Form.Group>
 
-
                     <Form.Group className="mb-3">
                         <Form.Label>{translate("WhatsApp")}</Form.Label>
                         <Form.Control type="text" placeholder={translate("Enter WhatsApp")} name="tg" value={driverData.tg} onChange={handleChange} />
                     </Form.Group>
 
-                    {/* <Form.Group className="mb-3">
+                    {/* Image upload field */}
+                    <Form.Group className="mb-3">
                         <Form.Label>{translate("Image")}</Form.Label>
                         <Form.Control
                             type="file"
                             name="image"
                             onChange={handleChange}
                         />
-                    </Form.Group> */}
-
-
+                    </Form.Group>
 
                     <div className="d-flex justify-content-between">
                         <Button variant="secondary" onClick={handleCancel}>{translate("Cancel")}</Button>

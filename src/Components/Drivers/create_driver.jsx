@@ -1,10 +1,11 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { Container, Form, Button } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { useNavigate } from 'react-router-dom';
 import translations from "../translations.json";
 import InputMask from 'react-input-mask';
 import { addDriver } from '../../http';
+
 function AddDriver() {
     const [driverData, setDriverData] = useState({
         firstName: '',
@@ -12,7 +13,7 @@ function AddDriver() {
         phoneNumber: '',
         whatsapp: '',
         parkId: '',
-        image: null,
+        image: null, // Added for image field
     });
     const navigate = useNavigate();
 
@@ -25,7 +26,7 @@ function AddDriver() {
         if (files) {
             setDriverData(prevData => ({
                 ...prevData,
-                [name]: files[0]
+                [name]: files[0] // Handling image file input
             }));
         } else {
             setDriverData(prevData => ({
@@ -49,18 +50,16 @@ function AddDriver() {
         }));
 
         if (driverData.image) {
-            formData.append('image', driverData.image, `${driverData.firstName}_${driverData.lastName}.jpg`);
+            formData.append('image', driverData.image, `${driverData.firstName}_${driverData.lastName}.jpg`); // Append image
         }
 
-        const data = await addDriver(formData)
-        if(data){
+        const data = await addDriver(formData);
+        if (data) {
             alert('Řidič úspěšně přidán!');
             navigate(-1);
-        }
-        else{
+        } else {
             alert('Chyba: Nepodařilo se přidat řidiče.');
-
-        }  
+        }
     };
 
     const handleCancel = () => {
@@ -114,6 +113,17 @@ function AddDriver() {
                             name="whatsapp"
                             placeholder={translate("Enter WhatsApp")}
                             value={driverData.whatsapp}
+                            onChange={handleChange}
+                        />
+                    </Form.Group>
+
+                    {/* New form group for image input */}
+                    <Form.Group className="mb-3">
+                        <Form.Label>{translate("Upload Driver Photo")}</Form.Label>
+                        <Form.Control
+                            type="file"
+                            name="image"
+                            accept="image/*"
                             onChange={handleChange}
                         />
                     </Form.Group>

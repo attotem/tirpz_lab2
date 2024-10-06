@@ -7,7 +7,7 @@ import SwapHorizIcon from '@mui/icons-material/SwapHoriz';
 import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
 import translations from "../translations.json"
 import { getCar,removeCar,getAllDrivers } from '../../http';
-
+import nophoto from "./nophoto.jpg"
 const CarsCard = ({
     brand,
     id,
@@ -206,7 +206,7 @@ const CarsCard = ({
 
                                 <div className='d-flex driver_car'>
 
-                                    {/* <img className='car_card_driver_img' src={DriverId == null ? nophoto : DriverData.photo}></img> */}
+                                    <img className='car_card_driver_img' src={DriverId == null ? nophoto : DriverData.photo}></img>
 
                                     <div className='d-flex flex-md-column '>
 
